@@ -7,7 +7,6 @@ const useUniqueComponentId = () => {
     ref.current += 1;
     return ref.current;
   };
-
   return getId;
 };
 

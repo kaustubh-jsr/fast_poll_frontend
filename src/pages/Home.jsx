@@ -27,10 +27,12 @@ const Home = () => {
   };
 
   const handleDelete = (id) => {
+    console.log(options);
     setOptions((prev) => prev.filter((option) => option.id !== id));
   };
 
   const addOption = () => {
+    console.log(options);
     setOptions((prev) => [...prev, { id: getId(), title: "" }]);
   };
 
