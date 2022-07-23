@@ -47,9 +47,7 @@ const SubmitVote = () => {
   if (loading) {
     return (
       <div className="bg-gray-100 flex-1 flex items-center justify-center">
-        <CircularProgress
-          style={{ color: "white", height: "50px", width: "50px" }}
-        />{" "}
+        <CircularProgress style={{ height: "50px", width: "50px" }} />{" "}
       </div>
     );
   }
@@ -121,8 +119,8 @@ const SubmitVote = () => {
               </button>
               {voteCasted && (
                 <span className="flex absolute h-3 w-3 top-0 right-0 -mt-1 -mr-1">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-purple-500" />
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500" />
                 </span>
               )}
             </div>
