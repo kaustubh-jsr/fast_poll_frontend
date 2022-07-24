@@ -29,7 +29,7 @@ const PollResults = () => {
   const [isPollExists, setIsPollExists] = useState(true);
 
   const websocketCon = () => {
-    client = new WebSocket(`${prodEndpoint}?poll_id=${pollId}`);
+    client = new WebSocket(`${localEndpoint}?poll_id=${pollId}`);
     client.onopen = () => {
       console.log("Websocket connected");
     };
