@@ -1,8 +1,12 @@
 import React from "react";
+import { motion } from "framer-motion";
 
-const OptionProgress = ({ title, votes, percentage }) => {
+const OptionProgress = ({ title, votes, percentage, layoutId }) => {
   return (
-    <div className="p-6 bg-white shadow-lg rounded-md text-gray-800">
+    <motion.div
+      layoutId={layoutId}
+      className="p-6 bg-white shadow-lg rounded-md text-gray-800"
+    >
       <div className="w-full flex mb-3">
         <span className="text-xl font-bold">{title}</span>
         <span className="ml-auto text-xl font-bold">{percentage}%</span>
@@ -14,7 +18,7 @@ const OptionProgress = ({ title, votes, percentage }) => {
         />
       </div>
       <span className="text-green-600">{votes} Votes</span>
-    </div>
+    </motion.div>
   );
 };
 

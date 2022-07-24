@@ -6,7 +6,7 @@ import { TelegramIcon, TwitterIcon, WhatsappIcon } from "../assets/SocialIcons";
 import { OptionProgress } from "../components";
 import { QRCodeModalButton } from "../components/QRCodeModalButton";
 import { useLocalStorage } from "../hooks/useLocalStorage";
-
+import { LayoutGroup } from "framer-motion";
 const PollResults = () => {
   const navigate = useNavigate();
   const { id: pollId } = useParams();
@@ -29,7 +29,7 @@ const PollResults = () => {
   const [isPollExists, setIsPollExists] = useState(true);
 
   const websocketCon = () => {
-    client = new WebSocket(`${prodEndpoint}?poll_id=${pollId}`);
+    client = new WebSocket(`${localEndpoint}?poll_id=${pollId}`);
     client.onopen = () => {
       console.log("Websocket connected");
     };
@@ -99,16 +99,19 @@ const PollResults = () => {
         </h1>
         <div className="mt-8 flex flex-col md:flex-row">
           <div className="flex flex-col gap-6 w-full md:w-2/3">
-            {poll?.options
-              .sort((a, b) => b.votes - a.votes)
-              .map((opt) => (
-                <OptionProgress
-                  key={opt.opt_id}
-                  title={opt.title}
-                  votes={opt.votes}
-                  percentage={percentValue(opt.votes, poll.totalVotes)}
-                />
-              ))}
+            <LayoutGroup>
+              {poll?.options
+                .sort((a, b) => b.votes - a.votes)
+                .map((opt) => (
+                  <OptionProgress
+                    key={opt.opt_id}
+                    layoutId={opt.opt_id || ""}
+                    title={opt.title}
+                    votes={opt.votes}
+                    percentage={percentValue(opt.votes, poll.totalVotes)}
+                  />
+                ))}
+            </LayoutGroup>
           </div>
           <div className="flex flex-col-reverse w-full fixed bottom-0 left-0 bg-white p-4 mt-9 md:mt-0 md:ml-16 md:w-1/3 md:static md:flex-col md:bg-transparent">
             {userOption ? (
