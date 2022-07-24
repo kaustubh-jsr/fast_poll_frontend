@@ -10,7 +10,6 @@ export const apiClient = axios.create({
 
 export const createPoll = async (pollQuestion, options) => {
   try {
-    console.log("inside createpoll");
     const formData = new FormData();
     formData.append("question", pollQuestion);
     formData.append("choices", JSON.stringify(options));
@@ -49,7 +48,6 @@ export const getPollData = async (pollId) => {
         pollId,
       },
     });
-    console.log(resp.data);
     return resp.data;
   } catch (e) {
     console.error(e.response);

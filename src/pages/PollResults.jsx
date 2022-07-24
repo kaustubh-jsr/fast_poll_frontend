@@ -36,8 +36,7 @@ const PollResults = () => {
 
     client.onmessage = (event) => {
       const pollData = JSON.parse(event.data).pollData;
-      console.log("got updated poll data");
-      console.log(pollData, pollData.pollId, pollData.poll.options);
+      console.log("Poll Data Updated");
       setPoll(pollData.poll);
     };
 
