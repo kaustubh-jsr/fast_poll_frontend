@@ -31,7 +31,7 @@ const SubmitVote = () => {
         setPoll(resp.poll);
         setIsPollExists(resp.isPollExists);
       } catch (e) {
-        toast.error("Something went wrong. Please try later");
+        navigate("/");
         console.error(e);
       }
     })();
@@ -51,7 +51,9 @@ const SubmitVote = () => {
       </div>
     );
   }
-
+  if (!isPollExists) {
+    navigate("/");
+  }
   const handleVote = async (id) => {
     if (voteCasted) {
       toast.error("Already Voted");
