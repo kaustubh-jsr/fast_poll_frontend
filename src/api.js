@@ -1,7 +1,7 @@
 import axios from "axios";
 import toast from "react-hot-toast";
-// export const BASE_URL = "https://polls-dev.herokuapp.com";
-export const BASE_URL = "http://127.0.0.1:8000";
+export const BASE_URL = "https://fast-poll-backend.herokuapp.com";
+// export const BASE_URL = "http://127.0.0.1:8000";
 
 export const apiClient = axios.create({
   xsrfHeaderName: "X-CSRFToken",

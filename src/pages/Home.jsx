@@ -127,7 +127,7 @@ const Home = () => {
         <button
           type="button"
           onClick={createPoll}
-          className="bg-green-500 relative px-6 py-2 text-white text-lg font-semibold rounded-md focus:ring-4 flex items-center gap-3 hover:opacity-90"
+          className="bg-green-500 mt-8 relative px-6 py-2 text-white text-lg font-semibold rounded-md focus:ring-4 flex items-center gap-3 hover:opacity-90"
           disabled={loading}
         >
           <span>Create Your Poll</span>

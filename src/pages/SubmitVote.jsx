@@ -106,7 +106,7 @@ const SubmitVote = () => {
               </span>
             )}
           </button>
-          <Link to={`/poll/result/${pollId}`} className="ml-auto">
+          <Link to={`/poll/results/${pollId}`} className="ml-auto">
             <div className="relative inline-flex rounded-md shadow-sm">
               <button
                 type="button"

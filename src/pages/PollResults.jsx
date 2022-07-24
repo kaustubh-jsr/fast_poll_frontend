@@ -13,6 +13,10 @@ const PollResults = () => {
   const [loading, setLoading] = useState(true);
   const [userOption, setUserOption] = useState();
   const [userVotes] = useLocalStorage("userVotes", []);
+  const localEndpoint = `ws://127.0.0.1:8000/ws/poll_results`;
+  const prodEndpoint = "wss://fast-poll-backend.herokuapp.com/ws/poll_results";
+  let client;
+
   const [poll, setPoll] = useState({
     question: "Question Loading...",
     options: [
@@ -24,6 +28,31 @@ const PollResults = () => {
   });
   const [isPollExists, setIsPollExists] = useState(true);
 
+  const websocketCon = () => {
+    client = new WebSocket(`${prodEndpoint}?poll_id=${pollId}`);
+    client.onopen = () => {
+      console.log("Websocket connected");
+    };
+
+    client.onmessage = (event) => {
+      const pollData = JSON.parse(event.data).pollData;
+      console.log("got updated poll data");
+      console.log(pollData, pollData.pollId, pollData.poll.options);
+      setPoll(pollData.poll);
+    };
+
+    client.onclose = (e) => {
+      console.log("Websocket disconnected.");
+      console.log(e.reason);
+    };
+
+    client.onerror = (err) => {
+      console.error(
+        `Socket encountered error : ${err.message}, Closing socket`
+      );
+      client.close();
+    };
+  };
   const percentValue = (number, total) => {
     if (total === 0) return 0;
     return Math.round((number / total) * 100);
@@ -50,7 +79,11 @@ const PollResults = () => {
       }
     })();
     setLoading(false);
-  }, [pollId]);
+  }, [pollId, navigate]);
+
+  useEffect(() => {
+    websocketCon();
+  }, []);
   if (loading) {
     return (
       <div className="bg-gray-100 flex-1 flex items-center justify-center">
