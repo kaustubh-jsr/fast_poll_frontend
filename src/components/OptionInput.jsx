@@ -1,6 +1,6 @@
 import React from "react";
 import { DeleteIcon } from "../assets/Icons";
-
+import { motion } from "framer-motion";
 const OptionInput = ({
   value,
   optionNumber,
@@ -10,7 +10,7 @@ const OptionInput = ({
   error,
 }) => {
   return (
-    <>
+    <motion.div layout exit={{ opacity: 0 }} animate={{ opacity: 1 }}>
       <h3 className="text-lg font-semibold text-gray-500 mb-1">
         Poll option {optionNumber}
       </h3>
@@ -35,7 +35,7 @@ const OptionInput = ({
           This field can't be empty
         </span>
       )}
-    </>
+    </motion.div>
   );
 };
 
