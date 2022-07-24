@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import "./index.css";
 import App from "./App";
-import { Home, PollCreated, PollResults, SubmitVote } from "./pages";
+import { Home, PollCreated, PollResults, SubmitVote, NotFound } from "./pages";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -16,6 +16,7 @@ root.render(
           <Route path="/new/:id" element={<PollCreated />} />
           <Route path="/poll/:id" element={<SubmitVote />} />
           <Route path="/poll/results/:id" element={<PollResults />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
       <Toaster />
