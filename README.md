@@ -1,7 +1,7 @@
 # Fast Poll
 
 Fast Poll - A real time polling application built in React and TailwindCSS.
-The API for this client is developed in Python/Django [Backend API](https://github.com/kaustubh-jsr/fast_poll_backend)
+The app uses websockets with channels served using redis on the [backend django app](https://github.com/kaustubh-jsr/fast_poll_backend), to update poll results in real time.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
