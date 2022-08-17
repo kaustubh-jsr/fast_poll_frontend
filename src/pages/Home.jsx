@@ -6,7 +6,7 @@ import { useUniqueComponentId } from "../hooks/useUniqueComponentId";
 import { isValidPollInputs } from "../utils";
 import { createPoll as createPollApi } from "../api";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 
 const Home = () => {
@@ -74,6 +74,12 @@ const Home = () => {
           <p className="text-gray-400 text-lg font-medium">
             Complete below fields to create a Poll
           </p>
+          <Link
+            to="/poll/results/1"
+            className="text-blue-500 font-bold text-lg"
+          >
+            View Demo Poll
+          </Link>
         </div>
 
         <section className="my-6">
